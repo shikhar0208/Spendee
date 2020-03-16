@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseDashboardPage correctly 1`] = `
+<div>
+  Error 404 - 
+  <Link
+    to="/"
+  >
+    Go home
+  </Link>
+</div>
+`;
