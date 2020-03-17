@@ -18,11 +18,5 @@ exports[`should render hesder correctly 1`] = `
   >
     Create Expense
   </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    to="/help"
-  >
-    Help
-  </NavLink>
 </header>
 `;
