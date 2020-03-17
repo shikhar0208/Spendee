@@ -10,7 +10,7 @@
     "dev-server": "webpack-dev-server",
     "test": "jest --watch --config=jest.config.json",
     "start": "node server/server.js",
-    "heroku:postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "keywords": [],
   "author": "",
