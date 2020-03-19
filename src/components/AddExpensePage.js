@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
-import { addExpense } from "../actions/expenses";
+import { startAddExpense } from "../actions/expenses";
 
 export class AddExpensePage extends React.Component {
   onSubmit = expense => {
     // callback function onSubmit as props
-    this.props.addExpense(expense);
+    this.props.startAddExpense(expense);
     // props.dispatch(addExpense(expense));
     this.props.history.push("/"); // is react-router function to redirect to given path
   };
@@ -22,7 +22,7 @@ export class AddExpensePage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addExpense: expense => dispatch(addExpense(expense))
+    startAddExpense: expense => dispatch(startAddExpense(expense))
   };
 };
 
