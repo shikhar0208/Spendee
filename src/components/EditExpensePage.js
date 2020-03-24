@@ -1,18 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
+import ConfirmationModal from './ConfirmationModal';
 import { startEditExpense, startRemoveExpense } from "../actions/expenses";
 
 export class EditExpensePage extends React.Component {
+  
+  state = {
+    selectedOption: false
+  };
+  
   onSubmit = expense => {
     this.props.startEditExpense(this.props.expense.id, expense);
     this.props.history.push("/");
   };
 
+  handleRemove = () => {
+    this.setState(() => ({ selectedOption: true }));
+    // alert('Removing');
+  };
+
+  handleClearSelectedOption = () => {
+    this.setState(() => ({
+      selectedOption: false
+    }));
+  };
+
   onRemove = () => {
+    this.setState(() => ( {selectedOption: false} ));
     this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push("/");
   };
+
   render() {
     return (
       <div>
@@ -23,8 +42,13 @@ export class EditExpensePage extends React.Component {
         </div>
         <div className="content-container">
           <ExpenseForm onSubmit={this.onSubmit} expense={this.props.expense} />
-          <button className="button button--secondary" onClick={this.onRemove}>Remove Expense</button>
+          <button className="button button--secondary" onClick={this.handleRemove}>Remove Expense</button>
         </div>
+        <ConfirmationModal 
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
+          onRemove={this.onRemove}
+        />
       </div>
     );
   }
